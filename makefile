@@ -11,7 +11,7 @@ GCC_FLAGS := -Wall -fPIC
 
 # A sample Makefile
 # This Makefile demonstrates and explains 
-# Make Macros, Macro Expansions,
+# Make Macros, Macro Expansions,Gene ­Berdichevsky
 # Rules, Targets, Dependencies, Commands, Goals
 # Artificial Targets, Pattern Rule, Dependency Rule.
 

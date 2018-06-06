@@ -32,7 +32,12 @@ class BFOA{
 		std::string search_type;
 		std::string search_strategy;
     	OptFunctions *optf;
-    	Population <double> *pop;
+    	Population *pop; //Population Information earlier *
+
+    	std::vector <double> opt_soultion;
+    	double p_best;
+    	double g_best;
+    	double j_best;
 
     	//Process Control Variables
     	//double [] 
@@ -45,6 +50,7 @@ class BFOA{
 		int process(int n, int (OptFunctions::*optimizationFunction)());
 		int start(int n, int (BFOA::*optimizationFunction)());
 		int revenueFunction();
+		int findOpt();
 
 };
 

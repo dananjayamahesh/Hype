@@ -36,6 +36,8 @@ std::string argj = "none";
 bool arged = false;
 std::string search_type = "continuous";
 std::string search_strategy = "min";
+
+
 //OptFunctions *optf;
 //bfoa->setupParam(&OptFunctions::revenueFunction,n,lb,ub,dimension,iteration,Nre,Ned,Nc,Ns,C,Ped,Da,Wa,Hr,Wr,lamda,L,arga,argj,arged, search_type,search_strategy);
 OptFunctions *optf = new OptFunctions(M,R,lrm,T,Nr);
@@ -57,4 +59,5 @@ OptFunctions *optf = new OptFunctions(M,R,lrm,T,Nr);
  bfoa->process(n, &OptFunctions::revenueFunction);
  printf("%d\n",tmp);
  return 0;
+
 }

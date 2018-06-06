@@ -7,18 +7,21 @@
 #include <string>
 #include <stdexcept>
 ////https://www.tutorialspoint.com/cplusplus/cpp_templates.htm
-
-template <class T>
+//https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file
+//https://www.codeproject.com/Articles/48575/How-to-define-a-template-class-in-a-h-file-and-imp
 class Population{
 	private:
 
 	public:
-		std::vector <T> individual;
-        std::vector <T> population[];
+		int n;
+		int ub;
+		int lb;
+		int dimension;
+		std::vector <double> individual;
+        std::vector <double> population[];
         double J[];
-		Population(int pop_size);
+		Population(int n, int lb ,	int ub ,int dimension);
 		~Population();
-
 };
 
 #endif /* HEADER_POPULATION_H */

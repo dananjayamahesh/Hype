@@ -27,7 +27,7 @@ int BFOA::setupParam
 (
 	int (OptFunctions::*optimizationFunction)(),
 	int n = 100, 
-	  //http://www.cplusplus.com/forum/beginner/6596/
+	//http://www.cplusplus.com/forum/beginner/6596/
 	int lb = -20,
 	int ub = 20,
 	int dimension = 2,
@@ -51,6 +51,11 @@ int BFOA::setupParam
 	std::string search_strategy = "min"
 )    
 {
+	//Create New Population
+	printf("Creating a new population..........\n");
+	this->pop = new Population (n,ub,lb,dimension);
+	printf("New population has been created.\n");
+
    return 0;
 }
 
@@ -74,5 +79,11 @@ int BFOA::revenueFunction(){
 	printf("%s\n","Revenue Function");
 	return 0;
 }
+
+int BFOA::findOpt(){
+	printf("%s\n","Optimization Procedure");
+	return 0;
+}
+
 
 

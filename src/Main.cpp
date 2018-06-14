@@ -58,6 +58,7 @@ OptFunctions *optf = new OptFunctions(M,R,lrm,T,Nr);
  bfoa->start(n, &BFOA::revenueFunction);
  bfoa->process(n, &OptFunctions::revenueFunction);
  printf("%d\n",tmp);
+ bfoa->findOpt();
  return 0;
 
 }

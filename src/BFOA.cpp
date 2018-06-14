@@ -54,6 +54,31 @@ int BFOA::setupParam
 	//Create New Population
 	printf("Creating a new population..........\n");
 	this->pop = new Population (n,ub,lb,dimension);
+	ic:
+    this->id = id;  		//Process ID
+	this->n = n;        //Number of Individuals: Population Size
+	this->function = function;		//Fitness Function
+	this->lb = lb;       //Lowerbound
+	this->ub = ub;        //Upper Bound
+	this->dimension = dimension;  //Dimenstion
+	this->iteration = iteration;//Number of Iteration
+	this->Nre = Nre;       //Number of Reproduction Stages
+	this->Ned = Ned;        //Number of Elimination-Dispesal
+	this->Nc = Nc;         //Number of Chemotaxix Stages
+	this->Ns = Ns;        //Number of Swiming Stages
+	this-> C = C;     //Step Sizes
+	this-> Ped = Ped;  //Probability of Elimination-Dispersal
+	this-> Da = Da;    //Depth of Attractants
+	this-> Wa = Wa;    //Width of Attractants
+	this-> Hr = Hr;    //Height of the Repellent
+	this-> Wr = Wr;        //Width of the Repellent
+	this-> lamda = lamda ;    //Lambda = 400
+	this-> L = L;    //L paramater
+	this-> arga = arga;
+	this-> argj = argj;
+	this-> arged = arged;
+	this-> search_type = search_type;
+	this-> search_strategy = search_strategy;
 	printf("New population has been created.\n");
 
    return 0;
@@ -82,6 +107,9 @@ int BFOA::revenueFunction(){
 
 int BFOA::findOpt(){
 	printf("%s\n","Optimization Procedure");
+	printf("%s %d\n","Global Paramters", this->n);
+
+	
 	return 0;
 }
 

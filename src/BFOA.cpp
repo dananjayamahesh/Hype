@@ -79,6 +79,9 @@ int BFOA::setupParam
 	this-> arged = arged;
 	this-> search_type = search_type;
 	this-> search_strategy = search_strategy;
+
+	//this->agents = new double[n][dimension];
+
 	printf("New population has been created.\n");
 
    return 0;
@@ -91,7 +94,106 @@ void BFOA::printParam(){
 int BFOA::process(int n, int (OptFunctions::*optimizationFunction)()){
 	//cout << parameter;
 	(optf->*optimizationFunction)();
+
+	//Initializing 2D vector
+    //this->agents
+    double agents [n][dimension];
+    double j_obj[n];
+    double j_last[n];
+    double j_best;
+
+    int step_size = 1;
+
+
+    for ( int i = 0; i < this->n; i++ ) {
+    	for (int j= 0; j< this->dimension; j++){
+    		 agents[i][j] = rand() % (this->ub - this->lb) + this->lb;
+    	}     
+    }
+
+   
+    for (int i = 0; i < this->n; ++i)
+    {
+        for (int j = 0; j < this->dimension; ++j)
+        {
+           // std::cout << agents[i][j] << ' ';
+        }
+        //std::cout << std::endl;
+        j_obj[i] = optf->functionGaussian(agents[i]);
+    }
+
+    //Elimination and Dispersal Step
+   	for (int l=0; l< this->Ned; l++){
+   		//Reproduction Step
+   		for(int k=0; k< this->Nre; k++){
+   			//Chemotaxis Staeps
+   			for(int j=0; j< this->Nc; j++){
+   				//Agents
+   				for(int i=0;i< this->n; i++){
+   					//Every Agent Performs
+   					j_last[i] = j_obj[i];
+
+   					//Chemotaxix Step
+   					for (int d = 0; d < this->dimension; d++){
+   						double c_d = rand() % (2*step_size) - step_size;
+   						agents[i][d] += c_d;
+   					}
+
+   					j_obj[i] = optf->functionGaussian(agents[i]);
+   					
+   					//printf("Fitness Value %f\n", j_obj[i]);
+
+   					for(int m =0; m<this->Ns;m++){
+   						//Every Swarming Step
+   						if(j_obj[i]>j_last[i]){
+
+   							j_last[i] = j_obj[i];
+   					
+   							for (int d = 0; d <this->dimension; d++){
+   								double c_d = rand() % (2*step_size) - step_size;
+   								agents[i][d] += c_d;
+   							}
+		
+   							j_obj[i] = optf->functionGaussian(agents[i]);
+
+   						}else{
+   							break;
+   						}
+
+   					}
+   				}
+
+   				//Best solutions
+   				double j_best_pop = 0 ;
+   				int j_best_index = 0;
+
+   				for(int i=0;i<this->n; i++){
+                   //Find the Best Solution
+   					if(j_obj[i] > j_best_pop){
+   						j_best_pop = j_obj[i];
+   						j_best_index = i;
+   					}
+
+   				}
+   				printf("Best Index%d \n",j_best_index);
+   				this->print_agent(agents[j_best_index]);
+   			}
+   		}
+   	}
+
+
 	return 0;
+}
+
+int BFOA::print_agent(double *agent){
+
+	for (int j = 0; j < this->dimension; ++j)
+        {
+           std::cout << agent[j] << ' ';
+        }
+        std::cout << std::endl;
+
+        return 0;
 }
 
 int BFOA::start(int n, int (BFOA::*optimizationFunction)()){

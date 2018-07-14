@@ -39,6 +39,8 @@ class BFOA{
     	double g_best;
     	double j_best;
 
+    	//double agents[][];
+
     	//Process Control Variables
     	//double [] 
         
@@ -51,6 +53,7 @@ class BFOA{
 		int start(int n, int (BFOA::*optimizationFunction)());
 		int revenueFunction();
 		int findOpt();
+		int print_agent(double *agent);
 
 };
 

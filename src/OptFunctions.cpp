@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "headers/OptFunctions.h"
+#include <math.h>
 
 OptFunctions::OptFunctions(int M, int R, int lrm, int T, int * Nr){
 
@@ -19,5 +20,14 @@ OptFunctions::~OptFunctions(){
 
 int OptFunctions::revenueFunction(){
 	printf("%s\n","Revenue FUnction");
+
+}
+
+double OptFunctions::functionGaussian(double *x){
+     //printf("%s\n", "Optimization Function 1");
+    //return 10 - ((exp(-4 * log(2) * ((x[0] - 10)**2 + (x[1] - 10)**2) / 6**2)))
+    return 10 - ((exp(-4 * log(2) * (pow((x[0] - 10),2) + pow((x[1] - 10),2)) / 6*6)));
+
+	//return 0;
 
 }
